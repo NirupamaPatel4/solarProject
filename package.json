@@ -1,0 +1,15 @@
+{
+  "name": "solar-api",
+  "version": "0.0.0",
+  "description": "A service that measures performance of solar systems against reference/estimated performance data.",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "amqp" : "*",
+    "pg" : "^5.1",
+    "cron":"^1.2.1"
+  },
+  "scripts": {
+    "start": "node src/app.js"
+  }
+}
