@@ -48,7 +48,6 @@ var calculateHours = (referenceData, liveData, date, callback) => {
     console.log('start_index: ', start_index);
     var result = [];
     var hour = 0;
-    //console.log('liveData: ', liveData);
     _.each(liveData,function(data) {
         var limit = referenceData.dcpower[start_index+hour]*(80/100);
         if(data.dcpower < limit){
@@ -68,3 +67,19 @@ exports.getLiveSolarSystemInfo = (callback) => {
         callback(err, data);
     });
 };
+
+exports.registerSystem = (solarSystemId, emailId, callback) => {
+    console.log('registerSystem called in solarSystemService');
+    solarSystemRepo.registerSystemInfo(solarSystemId, emailId, (err, data) => {
+        if(err) return callback(err);
+        callback(err, data);
+    });
+}
+
+exports.InsertData = (solarSystemId, dcPowerData, callback) => {
+    console.log('InsertData called in solarSystemService');
+    solarSystemRepo.InsertLiveData(solarSystemId, dcPowerData, (err, data) => {
+        if(err) return callback(err);
+        callback(err, data);
+    });
+}
