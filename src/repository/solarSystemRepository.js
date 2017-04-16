@@ -9,7 +9,11 @@ function query(sql, params, callback) {
             callback(err);
             return;
         }
-        client.query(sql, params, callback);
+        client.query(sql, params, function(err, result){
+            if (err) {console.error(err+'\nQuery: '+sql); done(); callback(); return;}
+            done();
+            callback(null,result);
+        });
     });
 }
 
